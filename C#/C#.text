@@ -1,0 +1,10 @@
+------------------------------ Biến trong C#: ------------------------------
+
+ int - lưu trữ số nguyên (toàn bộ số), không có số thập phân, chẳng hạn như 123 hoặc -123
+ long - Lưu trữ dữ liệu LỚN kiểu số nguyên như int 
+ double,float - lưu trữ số điểm nổi, với số thập phân, chẳng hạn như 19,99 hoặc -19,99 | nếu là float thì phải thêm F phía sao VD: 1,99F | nếu là double thì phải thêm F phía sao VD: 1,99D
+ char - lưu trữ các ký tự đơn lẻ, chẳng hạn như 'a' hoặc 'B'. Giá trị Char được bao quanh bởi các trích dẫn duy nhất
+ string - lưu trữ văn bản, chẳng hạn như "Hello World". Giá trị chuỗi được bao quanh bởi báo giá kép
+ bool - lưu trữ giá trị với hai trạng thái: đúng hoặc sai (chủ yếu được sử dụng để kiểm tra có điều kiện)
+
+----------------------------------------------------------------------------
