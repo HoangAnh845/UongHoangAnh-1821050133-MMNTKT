@@ -6,9 +6,11 @@ namespace MaNguonMo.Models{
     [Table("Persons")]
     public class Person{
         [Key]
-        public string PersonID {get; set; }
+        public string? PersonID {get; set; }
         [Required]
-        public string PersonName {get; set; }
+        public string? PersonName {get; set; }
+        [MaxLength(30)]
+        public string? Address {get; set;}
 
     }
 }

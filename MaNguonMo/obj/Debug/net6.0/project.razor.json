@@ -16298,6 +16298,11 @@
   "RootNamespace": "MaNguonMo",
   "Documents": [
     {
+      "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Customer\\Create.cshtml",
+      "TargetPath": "Views\\Customer\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Student\\Create.cshtml",
       "TargetPath": "Views\\Student\\Create.cshtml",
       "FileKind": "mvc"
@@ -16358,6 +16363,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Customer\\Details.cshtml",
+      "TargetPath": "Views\\Customer\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Movie\\Index.cshtml",
       "TargetPath": "Views\\Movie\\Index.cshtml",
       "FileKind": "mvc"
@@ -16380,6 +16390,11 @@
     {
       "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Employee\\Create.cshtml",
       "TargetPath": "Views\\Employee\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Customer\\Delete.cshtml",
+      "TargetPath": "Views\\Customer\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16423,8 +16438,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Customer\\Index.cshtml",
+      "TargetPath": "Views\\Customer\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Movie\\Create.cshtml",
       "TargetPath": "Views\\Movie\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\.net core MVC\\MaNguonMo\\Views\\Customer\\Edit.cshtml",
+      "TargetPath": "Views\\Customer\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

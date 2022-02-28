@@ -12,11 +12,11 @@ namespace MaNguonMo.Models
         [MinLength(3)]
         [MaxLength(30)]
         [Required (ErrorMessage = "warring!")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
-        public string Genre { get; set; }
+        public string? Genre { get; set; }
         public decimal Price { get; set; }
     }
 }

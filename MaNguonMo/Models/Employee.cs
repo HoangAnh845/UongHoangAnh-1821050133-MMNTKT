@@ -6,9 +6,12 @@ namespace MaNguonMo.Models{
     [Table("Employees")]
     public class Employee{
         [Key]
-        public string EmployeeID {get; set; }
+        public string? EmployeeID {get; set; }
         [Required]
-        public string EmployeeName {get; set; }
+        public string? EmployeeName {get; set; }
+        [MaxLength(30)]
+
+        public string? Address {get; set;}
 
     }
 }

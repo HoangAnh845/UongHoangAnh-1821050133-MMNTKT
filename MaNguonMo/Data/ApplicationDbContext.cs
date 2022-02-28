@@ -20,6 +20,8 @@ namespace MaNguonMo.Data{
         public DbSet<Person> Person { get; set; }
 
         public DbSet<Employee> Employee { get; set; }
+
+        public DbSet<MaNguonMo.Models.Customer> Customer { get; set; }
     }
 }
    
