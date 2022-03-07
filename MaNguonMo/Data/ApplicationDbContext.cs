@@ -22,6 +22,7 @@ namespace MaNguonMo.Data{
         public DbSet<Employee> Employee { get; set; }
 
         public DbSet<MaNguonMo.Models.Customer> Customer { get; set; }
+
     }
 }
    
