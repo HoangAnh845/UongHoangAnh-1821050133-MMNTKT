@@ -14,6 +14,7 @@ namespace MaNguonMo.Controllers
 {
     public class CustomerController : Controller
     {
+        XuLyChuoi Xulychuoi = new XuLyChuoi();
         AutoGenerateKey atoKey = new AutoGenerateKey();
         private readonly ApplicationDbContext _context;
 
@@ -59,9 +60,23 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Email,Gender,Birthday,PersonID,PersonName,Address")] Customer customer)
         {
-            customer.Address = atoKey.SinhMaTuDong("Name01");
+            customer.PersonName = Xulychuoi.Xuly(customer.PersonName);
+            customer.Address = Xulychuoi.Xuly(customer.Address);
+            // customer.Address = atoKey.SinhMaTuDong("Name01");
             if (ModelState.IsValid)
             {
+
+                var emp = _context.Customer.ToList().OrderByDescending(c => c.PersonID);
+                var countEmployee = _context.Student.Count();
+
+                if (countEmployee == 0)
+                {
+                    customer.PersonID = "CS001";
+                }else
+                {
+                    customer.PersonID = atoKey.SinhMaTuDong(emp.FirstOrDefault().PersonID);
+                }
+
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,6 +107,8 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Email,Gender,Birthday,PersonID,PersonName,Address")] Customer customer)
         {
+            customer.PersonName = Xulychuoi.Xuly(customer.PersonName);
+            customer.Address = Xulychuoi.Xuly(customer.Address);
             if (id != customer.PersonID)
             {
                 return NotFound();

@@ -14,6 +14,7 @@ namespace MaNguonMo.Controllers
 {
     public class MovieController : Controller
     {
+        XuLyChuoi Xulychuoi = new XuLyChuoi();
         AutoGenerateKey atoKey = new AutoGenerateKey();
         private readonly ApplicationDbContext _context;
 
@@ -59,9 +60,22 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
-            movie.Title = atoKey.SinhMaTuDong("TieuDe01");
+            movie.Title = Xulychuoi.Xuly(movie.Title);
+            movie.Genre = Xulychuoi.Xuly(movie.Genre);
             if (ModelState.IsValid)
             {
+
+                var emp = _context.Movie.ToList().OrderByDescending(c => c.Genre);
+                var countEmployee = _context.Movie.Count();
+
+                if (countEmployee == 0)
+                {
+                    movie.Genre = "001";
+                }else
+                {
+                    movie.Genre = atoKey.SinhMaTuDong(emp.FirstOrDefault().Genre);
+                }
+
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,6 +106,8 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
+            movie.Title = Xulychuoi.Xuly(movie.Title);
+            movie.Genre = Xulychuoi.Xuly(movie.Genre);
             if (id != movie.Id)
             {
                 return NotFound();

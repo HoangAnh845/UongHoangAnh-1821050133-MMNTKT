@@ -14,6 +14,7 @@ namespace MaNguonMo.Controllers
 {
     public class StudentController : Controller
     {
+        XuLyChuoi Xulychuoi = new XuLyChuoi();
         AutoGenerateKey atoKey = new AutoGenerateKey();
         private readonly ApplicationDbContext _context;
 
@@ -59,9 +60,21 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StudentID,StudentName")] Student student)
         {
-            student.StudentName = atoKey.SinhMaTuDong("Name01");
+            student.StudentName = Xulychuoi.Xuly(student.StudentName);
+            student.Address = Xulychuoi.Xuly(student.Address);
             if (ModelState.IsValid)
             {
+                var emp = _context.Student.ToList().OrderByDescending(c => c.StudentID);
+                var countEmployee = _context.Student.Count();
+
+                if (countEmployee == 0)
+                {
+                    student.StudentID = "SV001";
+                }else
+                {
+                    student.StudentID = atoKey.SinhMaTuDong(emp.FirstOrDefault().StudentID);
+                }
+
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,6 +105,8 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("StudentID,StudentName")] Student student)
         {
+            student.StudentName = Xulychuoi.Xuly(student.StudentName);
+            student.Address = Xulychuoi.Xuly(student.Address);
             if (id != student.StudentID)
             {
                 return NotFound();
