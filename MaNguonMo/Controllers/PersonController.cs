@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MaNguonMo.Data;
 using MaNguonMo.Models;
+using MaNguonMo.Models.Process;
 
 namespace MaNguonMo.Controllers
 {
     public class PersonController : Controller
     {
+         AutoGenerateKey atoKey = new AutoGenerateKey();
         private readonly ApplicationDbContext _context;
 
         public PersonController(ApplicationDbContext context)
@@ -57,6 +59,7 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PersonID,PersonName")] Person person)
         {
+            person.PersonName = atoKey.SinhMaTuDong("person001");
             if (ModelState.IsValid)
             {
                 _context.Add(person);

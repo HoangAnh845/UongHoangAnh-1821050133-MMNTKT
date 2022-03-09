@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MaNguonMo.Models;
 using MaNguonMo.Data;
+using MaNguonMo.Models.Process;
 
 namespace MaNguonMo.Controllers
 {
     public class MovieController : Controller
     {
+        AutoGenerateKey atoKey = new AutoGenerateKey();
         private readonly ApplicationDbContext _context;
 
         public MovieController(ApplicationDbContext context)
@@ -57,6 +59,7 @@ namespace MaNguonMo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
         {
+            movie.Title = atoKey.SinhMaTuDong("TieuDe01");
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
