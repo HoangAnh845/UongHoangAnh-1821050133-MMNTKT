@@ -24,8 +24,15 @@ namespace MaNguonMo.Controllers
         }
 
         // GET: Student
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+            var students = from m in _context.Student
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.StudentName!.Contains(searchString));
+            }
             return View(await _context.Student.ToListAsync());
         }
 
@@ -70,7 +77,8 @@ namespace MaNguonMo.Controllers
                 if (countEmployee == 0)
                 {
                     student.StudentID = "SV001";
-                }else
+                }
+                else
                 {
                     student.StudentID = atoKey.SinhMaTuDong(emp.FirstOrDefault().StudentID);
                 }
