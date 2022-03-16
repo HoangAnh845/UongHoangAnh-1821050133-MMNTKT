@@ -10,11 +10,15 @@ namespace MaNguonMo.Models{
         public string? EmployeeID {get; set; }
         [Required]
 
-         [Display(Name="Tên")]
+        [Display(Name="Tên")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(30)]
         public string? EmployeeName {get; set; }
         [MaxLength(30)]
 
         [Display(Name="Địa Chỉ")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(30)]
         public string? Address {get; set;}
 
     }

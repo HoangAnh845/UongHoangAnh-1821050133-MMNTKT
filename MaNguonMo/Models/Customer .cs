@@ -11,6 +11,9 @@ namespace MaNguonMo.Models{
         [MaxLength(30)]
 
         [Display(Name="Giới tính")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [Required]
+        [StringLength(30)]
         public string? Gender {get; set; }
 
         [Display(Name="Sinh nhật")]

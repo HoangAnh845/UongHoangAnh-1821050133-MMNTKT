@@ -11,10 +11,15 @@ namespace MaNguonMo.Models{
         [Required]
 
         [Display(Name="Họ và Tên Sinh Viên")]
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(30)]
         public string? StudentName {get; set; }
         [MaxLength(30)]
 
         [Display(Name="Địa Chỉ")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
+        [StringLength(30)]
         public string? Address {get; set;}
     }
 }
